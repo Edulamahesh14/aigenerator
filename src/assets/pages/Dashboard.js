@@ -3,8 +3,7 @@ import axios from "axios";
 import { Switch } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { FaUserCircle } from "react-icons/fa";
-import aiImage from "../assets/sample-image.png"; 
-
+import sampleImage from "../../assets/sample-image.png";
 const Dashboard = () => {
   const [enabled, setEnabled] = useState(false);
   const [userName, setUserName] = useState("Guest");
@@ -65,7 +64,7 @@ const Dashboard = () => {
 
       {/* AI Image */}
       <motion.img
-        src={imageUrl || aiImage}
+        src={imageUrl || sampleImage}
         alt="AI Illustration"
         className="w-96 h-96 object-cover mb-6 rounded-lg shadow-lg border border-gray-300"
         initial={{ opacity: 0, y: -50 }}

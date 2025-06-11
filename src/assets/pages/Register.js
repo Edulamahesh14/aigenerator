@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Signup = () => {
+
+const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -14,29 +16,29 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Ensure email & password are not empty
-    if (!formData.email || !formData.password) {
-      alert("Please fill in all fields!");
-      return;
-    }
+  if (!formData.email || !formData.password || !formData.username) {
+    alert("Please fill in all fields!");
+    return;
+  }
 
-    // Save user data to localStorage
-    localStorage.setItem("user", JSON.stringify(formData));
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/register", formData);
 
-    // Debugging: Check if data is actually saved
-    console.log("User registered:", localStorage.getItem("user"));
-
-    // Redirect to Dashboard
-    navigate("/dashboard");
-  };
+    console.log("✅ Registered:", response.data);
+    navigate("/login");
+  } catch (error) {
+    console.error("❌ Registration failed:", error.response?.data || error.message);
+    alert("Registration failed!");
+  }
+};
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-200 to-pink-200">
       <div className="bg-white p-8 rounded-lg shadow-md w-96 transform transition-all duration-500 hover:scale-105">
-        <h1 className="text-2xl font-bold text-center mb-6 text-purple-700">Sign Up</h1>
+        <h1 className="text-2xl font-bold text-center mb-6 text-purple-700">Register</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -70,14 +72,14 @@ const Signup = () => {
           </button>
         </form>
         <p className="text-center mt-4">
-          Already have an account?{" "}
+          Already have an account?
           <span onClick={() => navigate("/login")} className="text-blue-500 cursor-pointer">
             Login
           </span>
         </p>
       </div>
-    </div>
+    </div>  
   );
 };
 
-export default Signup;
+export default Register;

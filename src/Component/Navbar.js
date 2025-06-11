@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#F8F8FF] bg-opacity-95 backdrop-blur-lg shadow-md z-50 flex items-center">
+    <nav className="sticky top-0 left-0 w-full bg-[#F8F8FF] bg-opacity-95 backdrop-blur-lg shadow-md z-50 flex items-center">
       <div className="container mx-auto flex justify-between items-center py-4 px-8">
         
         {/* Logo on Left - Merged into Navbar */}
@@ -26,6 +26,9 @@ const Navbar = () => {
           </Link>
           <Link to="/contact" className="text-purple-700 hover:text-violet-900 transition-all duration-300">
             Contact
+          </Link>
+           <Link to="/service" className="text-purple-700 hover:text-violet-900 transition-all duration-300">
+            Service
           </Link>
 
           {/* Login Button */}

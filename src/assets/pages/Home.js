@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import aiImage from "../assets/ai-art.png";
-import aiImage1 from "../assets/ai-art1.png";
-import aiImage2 from "../assets/ai-art2.png";
+import aiImage from "../../assets/ai-art.png";
+import aiImage1 from "../../assets/ai-art1.png";
+import aiImage2 from "../../assets/ai-art2.png";
+
 
 const images = [aiImage, aiImage1, aiImage2];
 
@@ -55,6 +56,7 @@ const Home = () => {
         </button>
       </div>
     </div>
+    
   );
 };
 
