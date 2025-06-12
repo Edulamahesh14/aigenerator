@@ -6,6 +6,14 @@
   height: 40vmin;
   pointer-events: none;
 }
+.mobile-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
